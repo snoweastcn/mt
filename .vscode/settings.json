@@ -1,0 +1,15 @@
+{
+  "vetur.format.defaultFormatterOptions": {
+    "prettyhtml": {
+      // 单行超过100个长度的时候开始换行
+      "printWidth": 100,
+      "tabWidth": 2,
+      "useTabs": false,
+      "singleQuote": false,
+      "wrapAttributes": true,
+      "sortAttributes": true,
+    },
+  },
+  // 禁用vetur的JS格式化，交给eslint处理
+  // "vetur.format.defaultFormatter.js": "none",
+}
