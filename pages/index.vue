@@ -25,10 +25,29 @@ export default {
     EMenu,
     ELife,
     EArtistic
+  },
+  data() {
+    return {
+      tit: String
+    };
+  },
+  mounted() {
+    this.tit = document.title;
+    this.titleScrolling();
+  },
+  methods: {
+    titleScrolling() {
+      setInterval(() => {
+        let head = this.tit.substring(0, 1);
+        let foot = this.tit.substring(1);
+        this.tit = foot + head;
+        document.title = this.tit;
+      }, 500);
+    }
   }
 };
 </script>
 
 <style lang="scss">
-  @import "@/assets/css/index/index.scss";
+@import "@/assets/css/index/index.scss";
 </style>

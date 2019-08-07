@@ -78,7 +78,7 @@ export default {
     }
   },
   methods: {
-    querySearchAsync: _.debounce(async (query, cb) => {
+    querySearchAsync: _.debounce(async function(query, cb) {
       if (this.cities.length) {
         cb(this.cities.filter(item => item.value.indexOf(query) > -1));
       } else {
@@ -104,5 +104,5 @@ export default {
 </script>
 
 <style lang='scss'>
-@import "@/assets/css/changeCity/categroy.scss";
+@import "@/assets/css/changecity/iselect.scss";
 </style>
