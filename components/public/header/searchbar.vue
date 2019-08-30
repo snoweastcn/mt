@@ -33,7 +33,9 @@
             <dd
               :key="index"
               v-for="(item, index) in $store.state.home.hotPlace.slice(0,5)"
-            >{{item.name}}</dd>
+            >
+              <a :href="'/products?keyword='+encodeURIComponent(item.name)">{{item.name}}</a>
+            </dd>
           </dl>
           <dl
             class="searchList"
@@ -42,13 +44,15 @@
             <dd
               :key="index"
               v-for="(item, index) in searchList"
-            >{{item.name}}</dd>
+            >
+              <a :href="'/products?keyword='+encodeURIComponent(item.name)">{{item.name}}</a>
+            </dd>
           </dl>
         </div>
         <p class="suggest">
           <a
+            :href="'/products?keyword='+encodeURIComponent(item.name)"
             :key="index"
-            href="#"
             v-for="(item, index) in $store.state.home.hotPlace.slice(0,5)"
           >{{item.name}}</a>
         </p>

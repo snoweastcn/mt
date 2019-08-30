@@ -46,7 +46,7 @@ export default {
         zoom: 11,
         center: this.point
       });
-      window.AMap.plugins("AMap.ToolBar", () => {
+      window.AMap.plugin("AMap.ToolBar", () => {
         let toolbar = new window.AMap.ToolBar();
         map.addControl(toolbar);
         let marker = new window.AMap.Marker({
