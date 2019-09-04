@@ -13,7 +13,10 @@
         <Summa :meta="product" />
       </el-col>
     </el-row>
-    <el-row class="m-title">
+    <el-row
+      class="m-title"
+      v-if="canOrder"
+    >
       <el-col :span="24">
         <h3>商家团购或优惠</h3>
       </el-col>

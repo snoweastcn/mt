@@ -61,26 +61,26 @@
           v-model="activeName"
         >
           <el-tab-pane
-            :label="全部订单"
-            :name="all"
+            :label="'全部订单'"
+            :name="'all'"
           >
             <list :cur="cur" />
           </el-tab-pane>
           <el-tab-pane
-            :label="待付款"
-            :name="unpay"
+            :label="'待付款'"
+            :name="'unpay'"
           >
             <list :cur="cur" />
           </el-tab-pane>
           <el-tab-pane
-            :label="待使用"
-            :name="unuse"
+            :label="'待使用'"
+            :name="'unuse'"
           >
             <list :cur="cur" />
           </el-tab-pane>
           <el-tab-pane
-            :label="待评价"
-            :name="unreplay"
+            :label="'待评价'"
+            :name="'unreplay'"
           >
             <list :cur="cur" />
           </el-tab-pane>
@@ -128,11 +128,42 @@ export default {
   },
   methods: {
     handleClick(tab) {
-      this.activeName = tab.name
+      this.activeName = tab.name;
+    }
+  },
+  async asyncData(ctx) {
+    let {
+      status,
+      data: { code, list }
+    } = await ctx.$axios.post("/order/getOrders");
+    if (status === 200 && code === 0 && list.length) {
+      return {
+        list: list.map(item => {
+          return {
+            img: item.imgs.length ? item.imgs[0].url : "/logo.png",
+            name: item.name,
+            count: 1,
+            total: item.total,
+            status: item.status,
+            statusText: item.status === 0 ? "待付款" : "已付款"
+          };
+        }),
+        cur: list.map(item => {
+          return {
+            img: item.imgs.length ? item.imgs[0].url : "/logo.png",
+            name: item.name,
+            count: 1,
+            total: item.total,
+            status: item.status,
+            statusText: item.status === 0 ? "待付款" : "已付款"
+          };
+        })
+      };
     }
   }
 };
 </script>
 
-<style lang='css'>
+<style lang='scss'>
+@import "@/assets/css/order/index.scss";
 </style>
